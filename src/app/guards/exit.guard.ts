@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { DashboardComponent } from '../pages/dashboard/dashboard.component';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ExitGuard implements CanDeactivate<unknown> {
+export class ExitGuard implements CanDeactivate<DashboardComponent> {
   canDeactivate(
-    component: unknown,
+    component: DashboardComponent,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    return window.confirm("Deseja sair da página?");
   }
   
 }
